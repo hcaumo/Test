@@ -67,7 +67,7 @@ async function handler(req, res) {
         method: 'POST',
         body: JSON.stringify({
             userAddress: address,
-            contractAddress: "0x0014295e37E402f8926b64044fc619A9Ee8c4035"
+            contractAddress: "0x5fB1977e9f5E37EA70Cf05c18264FC0D86c97aCB"
         })
     });
     if (!autotaskResponse.ok) {
