@@ -40,8 +40,7 @@ export default class App extends React.Component {
     
     this.setState({ message: 'Good to go! Accept the minting tx on Metamask.' });
     try {
-      const tx = await nftContract.mint(1, { 
-        value: ethers.utils.parseEther("0.01")}, hash, signature);
+      const tx = await nftContract.mint({ value: ethers.utils.parseEther("0.001")}, hash, signature);
       this.setState({ message: `Waiting for confirmation on tx ${tx.hash}` });
 
       const receipt = await tx.wait();
