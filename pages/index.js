@@ -31,7 +31,7 @@ export default class App extends React.Component {
     }
   }
 
-  executeMint = async (hash, signature) => {
+  executeMint = async ( hash, signature) => {
     const nftContract = new ethers.Contract(
       process.env.NEXT_PUBLIC_NFT_ADDRESS,
       NFT_ABI,
@@ -40,7 +40,7 @@ export default class App extends React.Component {
     
     this.setState({ message: 'Good to go! Accept the minting tx on Metamask.' });
     try {
-      const tx = await nftContract.mint({ value: ethers.utils.parseEther("0.001")}, hash, signature);
+      const tx = await nftContract.mint(hash, signature, { value: ethers.utils.parseEther("0.001")});
       this.setState({ message: `Waiting for confirmation on tx ${tx.hash}` });
 
       const receipt = await tx.wait();
@@ -72,7 +72,7 @@ export default class App extends React.Component {
       result = JSON.parse(result);
       
       // Obtained the hash and signature. Now go for the actual mint.
-      await this.executeMint(result.hash, result.signature);
+      await this.executeMint(result.value, result.hash, result.signature);
     } else {
       console.error('Error verifying request');
     }
