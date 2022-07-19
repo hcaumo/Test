@@ -72,7 +72,7 @@ export default class App extends React.Component {
       result = JSON.parse(result);
       
       // Obtained the hash and signature. Now go for the actual mint.
-      await this.executeMint(result.value, result.hash, result.signature);
+      await this.executeMint(result.hash, result.signature);
     } else {
       console.error('Error verifying request');
     }
